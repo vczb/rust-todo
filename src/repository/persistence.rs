@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{Read, Write};
 
-use crate::todo_item::TodoItem;
+use crate::entities::todo_item::TodoItem;
 
 pub fn save_to_file(todos: &Vec<TodoItem>) -> std::io::Result<()> {
     let json = serde_json::to_string(&todos).unwrap();

@@ -1,4 +1,4 @@
-use crate::todo_item::TodoItem;
+use crate::entities::todo_item::TodoItem;
 
 pub fn add_todo(todos: &mut Vec<TodoItem>, title: String) {
     let new_id = todos.len() as u32 + 1;

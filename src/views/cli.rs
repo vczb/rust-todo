@@ -1,5 +1,5 @@
-use crate::commands::{add_todo, complete_todo, list_todos, remove_todo};
-use crate::persistence::{save_to_file, read_from_file};
+use crate::services::commands::{add_todo, complete_todo, list_todos, remove_todo};
+use crate::repository::persistence::{save_to_file, read_from_file};
 
 pub fn run_cli() {
 
