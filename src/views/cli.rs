@@ -1,4 +1,4 @@
-use crate::services::commands::{add_todo, complete_todo, list_todos, remove_todo};
+use crate::services::commands::{add_todo, complete_todo, list_todos, remove_todo, uncomplete_todo};
 use crate::repository::persistence::{save_to_file, read_from_file};
 
 pub fn run_cli() {
@@ -11,7 +11,8 @@ pub fn run_cli() {
       println!("2: Complete Todo");
       println!("3: List Todos");
       println!("4: Remove Todo");
-      println!("5: Quit");
+      println!("5: Uncomplete Todo");
+      println!("6: Quit");
 
       let mut choice = String::new();
       std::io::stdin().read_line(&mut choice).unwrap();
@@ -40,7 +41,14 @@ pub fn run_cli() {
             let id: u32 = id.trim().parse().unwrap();
             remove_todo(&mut todos, id);
           },
-          "5" => break,
+          "5" => {
+            println!("Enter the ID of the todo to mark as uncompleted:");
+            let mut id = String::new();
+            std::io::stdin().read_line(&mut id).unwrap();
+            let id: u32 = id.trim().parse().unwrap();
+            uncomplete_todo(&mut todos, id);
+          },
+          "6" => break,
           _ => println!("Invalid choice, please try again."),
       }
   }

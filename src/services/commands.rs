@@ -16,6 +16,12 @@ pub fn complete_todo(todos: &mut Vec<TodoItem>, id: u32) {
     }
 }
 
+pub fn uncomplete_todo(todos: &mut Vec<TodoItem>, id: u32) {
+  if let Some(todo) = todos.iter_mut().find(|todo| todo.id() == id) {
+      todo.set_completed(false);
+  }
+}
+
 pub fn list_todos(todos: &Vec<TodoItem>) {
     for todo in todos {
         println!("ID: {}, Title: {}, Completed: {}", todo.id(), todo.title(), todo.completed());
