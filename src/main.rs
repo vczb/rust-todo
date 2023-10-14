@@ -2,7 +2,7 @@ mod todo_item;
 mod commands;
 mod persistence;
 
-use crate::commands::{add_todo, complete_todo, list_todos};
+use crate::commands::{add_todo, remove_todo, complete_todo, list_todos};
 use persistence::{save_to_file, read_from_file};
 
 fn main() {
@@ -14,7 +14,8 @@ fn main() {
       println!("1: Add Todo");
       println!("2: Complete Todo");
       println!("3: List Todos");
-      println!("4: Quit");
+      println!("4: Remove Todo");
+      println!("5: Quit");
 
       let mut choice = String::new();
       std::io::stdin().read_line(&mut choice).unwrap();
@@ -36,7 +37,14 @@ fn main() {
           "3" => {
               list_todos(&todos);
           },
-          "4" => break,
+          "4" => {
+            println!("Enter the ID of the todo to mark as completed:");
+            let mut id = String::new();
+            std::io::stdin().read_line(&mut id).unwrap();
+            let id: u32 = id.trim().parse().unwrap();
+            remove_todo(&mut todos, id);
+          },
+          "5" => break,
           _ => println!("Invalid choice, please try again."),
       }
   }

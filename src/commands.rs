@@ -6,6 +6,10 @@ pub fn add_todo(todos: &mut Vec<TodoItem>, title: String) {
     todos.push(new_todo);
 }
 
+pub fn remove_todo(todos: &mut Vec<TodoItem>, id: u32) {
+  todos.retain(|todo| todo.id() != id);
+}
+
 pub fn complete_todo(todos: &mut Vec<TodoItem>, id: u32) {
     if let Some(todo) = todos.iter_mut().find(|todo| todo.id() == id) {
         todo.set_completed(true);
