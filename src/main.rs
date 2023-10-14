@@ -1,15 +1,7 @@
-mod entities {
-  pub mod todo_item;
-}
-mod services {
-  pub mod commands;
-}
-mod repository {
-  pub mod persistence;
-}
-mod views {
-  pub mod cli;
-}
+mod entities;
+mod repository;
+mod services;
+mod views;
 
 use views::cli::run_cli;
 
