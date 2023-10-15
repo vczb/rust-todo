@@ -1,10 +1,10 @@
 use serde::{Serialize, Deserialize};
 
-#[derive(Serialize, Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone, Default)]
 pub struct TodoItem {
   id: u32,
-  title: String,
-  completed: bool,
+  pub title: String,
+  pub completed: bool,
 }
 
 impl TodoItem {
